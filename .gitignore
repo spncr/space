@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled Lua sources
 luac.out
 
@@ -39,3 +40,15 @@ luac.out
 *.x86_64
 *.hex
 
+=======
+/.internal
+/build
+.externalToolBuilders
+.DS_Store
+Thumbs.db
+.lock-wscript
+*.pyc
+.project
+.cproject
+builtins
+>>>>>>> 0a3a9b4 (init commit)

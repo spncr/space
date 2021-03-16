@@ -1,0 +1,75 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	--msg.post("camera", "follow")
+	
+	self.rotation_direction = vmath.vector3(0, 0, 0)
+	self.thrust = 0
+	self.power = 1000
+	self.max_thrust = 1
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function update(self, dt)
+	local rotation = go.get_rotation()
+	local world_position = go.get_world_position()
+	
+	msg.post("#collisionobject", "apply_force", { 
+		force = vmath.rotate(rotation, self.rotation_direction), 
+		position = world_position + vmath.rotate(rotation, vmath.vector3(-50, 50, 0)) 
+	})
+	
+	msg.post("#collisionobject", "apply_force", { 
+		force = vmath.rotate(rotation, -self.rotation_direction), 
+		position = world_position + vmath.rotate(rotation, vmath.vector3(50, -50, 0)) 
+	})
+	
+	msg.post("#collisionobject", "apply_force", { 
+		force = vmath.rotate(rotation, vmath.vector3( 0, self.thrust * self.power, 0 )),
+		position = go.get_world_position() - vmath.vector3(0, -10, 0)
+	})
+	
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("thrust") then
+		self.thrust = 1
+		particlefx.play("#thruster")
+
+	else
+		self.thrust = 0
+		particlefx.stop("#thruster")
+		
+	end
+
+	if action_id == hash("left") then
+		if action.pressed then
+			self.rotation_direction.x = -100
+		elseif action.released then
+			self.rotation_direction.x = 0
+		end
+	elseif action_id == hash("right") then
+		if action.pressed then
+			self.rotation_direction.x = 100
+		elseif action.released then
+			self.rotation_direction.x = 0
+		end
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

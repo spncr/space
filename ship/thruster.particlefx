@@ -1,7 +1,7 @@
 emitters {
   id: "emitter"
   mode: PLAY_MODE_LOOP
-  duration: 1.0
+  duration: 4.0
   space: EMISSION_SPACE_WORLD
   position {
     x: 0.0
@@ -272,8 +272,8 @@ emitters {
       t_y: 0.0
     }
   }
-  size_mode: SIZE_MODE_MANUAL
-  start_delay_spread: 0.0
+  size_mode: SIZE_MODE_AUTO
+  start_delay_spread: 2.0
   duration_spread: 0.0
   stretch_with_velocity: false
   start_offset: 0.0

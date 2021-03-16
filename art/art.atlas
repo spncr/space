@@ -7,7 +7,11 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/universe/stars/stars.png"
+  image: "/art/thrst.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/art/thrust.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

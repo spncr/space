@@ -4,7 +4,7 @@ function init(self)
 	
 	self.rotation_direction = vmath.vector3(0, 0, 0)
 	self.thrust = 0
-	self.power = 1000
+	self.power = 6
 	self.max_thrust = 1
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
@@ -18,21 +18,29 @@ end
 function update(self, dt)
 	local rotation = go.get_rotation()
 	local world_position = go.get_world_position()
+
+	local body = "#collisionobject"
 	
-	msg.post("#collisionobject", "apply_force", { 
+	msg.post(body, "apply_force", { 
 		force = vmath.rotate(rotation, self.rotation_direction), 
-		position = world_position + vmath.rotate(rotation, vmath.vector3(-50, 50, 0)) 
+		position = world_position + vmath.rotate(rotation, vmath.vector3(-8, 8, 0)) 
 	})
 	
-	msg.post("#collisionobject", "apply_force", { 
+	msg.post(body, "apply_force", { 
 		force = vmath.rotate(rotation, -self.rotation_direction), 
-		position = world_position + vmath.rotate(rotation, vmath.vector3(50, -50, 0)) 
+		position = world_position + vmath.rotate(rotation, vmath.vector3(8, -8, 0)) 
 	})
 	
-	msg.post("#collisionobject", "apply_force", { 
-		force = vmath.rotate(rotation, vmath.vector3( 0, self.thrust * self.power, 0 )),
-		position = go.get_world_position() - vmath.vector3(0, -10, 0)
-	})
+	-- msg.post("#collisionobject", "apply_force", { 
+	-- 	force = vmath.rotate(rotation, vmath.vector3( 0, 5000 * self.thrust, 0)),
+	-- 	position = go.get_world_position()
+	-- })
+
+	local velocity = go.get(body, "linear_velocity")
+	if self.thrust then
+		go.set(body, "linear_velocity", velocity + (vmath.rotate(rotation, vmath.vector3( 0, self.power * self.thrust, 0))))
+	end
+	--print(vmath.length(velocity))
 	
 end
 
@@ -44,24 +52,27 @@ end
 
 function on_input(self, action_id, action)
 	if action_id == hash("thrust") then
-		self.thrust = 1
-		particlefx.play("#thruster")
-
-	else
-		self.thrust = 0
-		particlefx.stop("#thruster")
-		
+		if action.pressed then
+			self.thrust = 1
+			particlefx.play("#thruster")
+			msg.post("#tailight", "enable")
+		elseif action.released then
+			self.thrust = 0
+			particlefx.stop("#thruster")
+			msg.post("#tailight", "disable")
+		end
 	end
+
 
 	if action_id == hash("left") then
 		if action.pressed then
-			self.rotation_direction.x = -100
+			self.rotation_direction.x = -4
 		elseif action.released then
 			self.rotation_direction.x = 0
 		end
 	elseif action_id == hash("right") then
 		if action.pressed then
-			self.rotation_direction.x = 100
+			self.rotation_direction.x = 4
 		elseif action.released then
 			self.rotation_direction.x = 0
 		end

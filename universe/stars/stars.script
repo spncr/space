@@ -1,4 +1,11 @@
+
 function init(self)
+	self.tiles = {}
+	for x = -1200, 1200, 1200 do
+		for y = -810, 810, 810 do
+			table.insert(self.tiles, factory.create("starspawner#factory", vmath.vector3(x, y, -10)))
+		end
+	end
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
@@ -11,6 +18,39 @@ function final(self)
 end
 
 function update(self, dt)
+	local first_tile = go.get_position(self.tiles[1])
+	local ship_position = go.get_position("/ship")
+	--print(ship_position)
+	for key,tile in pairs(self.tiles) do
+		local tile_position = go.get_position(tile)
+		local y_distance = ship_position.y - tile_position.y
+		local x_distance = ship_position.x - tile_position.x
+		--print( "y: " .. tostring(y_distance))
+		if y_distance > 1215 then
+			table.remove(self.tiles, key)
+			go.delete(tile)
+			table.insert(self.tiles, factory.create("starspawner#factory", vmath.vector3(tile_position.x, tile_position.y + 2430, tile_position.z)))
+		elseif y_distance < -1215 then
+				table.remove(self.tiles, key)
+				go.delete(tile)
+				table.insert(self.tiles, factory.create("starspawner#factory", vmath.vector3(tile_position.x, tile_position.y - 2430, tile_position.z)))
+		end
+
+		if x_distance > 2000 then
+			table.remove(self.tiles, key)
+			go.delete(tile)
+			table.insert(self.tiles, factory.create("starspawner#factory", vmath.vector3(tile_position.x + 3600, tile_position.y , tile_position.z)))
+		elseif x_distance < -2000 then
+			table.remove(self.tiles, key)
+			go.delete(tile)
+			table.insert(self.tiles, factory.create("starspawner#factory", vmath.vector3(tile_position.x - 3600, tile_position.y , tile_position.z)))
+		end
+
+		
+		-- if key == 1 then
+		-- 	print(y_distance)
+		-- end
+	end
 	-- Add update code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed

@@ -18,14 +18,14 @@ components {
   component: "/ship/thruster.particlefx"
   position {
     x: 0.0
-    y: 0.0
-    z: 0.0
+    y: -20.0
+    z: -1.0
   }
   rotation {
-    x: 6.123234E-17
-    y: 6.123234E-17
-    z: -1.0
-    w: 3.7493994E-33
+    x: 1.0
+    y: 0.0
+    z: 0.0
+    w: 6.123234E-17
   }
 }
 embedded_components {
@@ -37,7 +37,7 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 0.0
+    x: 0.5
     y: 0.0
     z: 0.0
   }
@@ -55,7 +55,7 @@ embedded_components {
   "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
   "mass: 1.0\n"
   "friction: 0.1\n"
-  "restitution: 0.5\n"
+  "restitution: 0.1\n"
   "group: \"default\"\n"
   "mask: \"default\"\n"
   "embedded_collision_shape {\n"
@@ -79,14 +79,34 @@ embedded_components {
   "  data: 8.0\n"
   "  data: 10.0\n"
   "}\n"
-  "linear_damping: 0.0\n"
-  "angular_damping: 1.0\n"
+  "linear_damping: 0.2\n"
+  "angular_damping: 0.2\n"
   "locked_rotation: false\n"
   ""
   position {
     x: 0.0
     y: 0.0
     z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "tailight"
+  type: "sprite"
+  data: "tile_set: \"/art/art.atlas\"\n"
+  "default_animation: \"tailight\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: 0.5
+    y: -1.0
+    z: 1.0
   }
   rotation {
     x: 0.0

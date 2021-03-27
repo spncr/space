@@ -19,15 +19,15 @@ emitters {
   material: "/builtins/materials/particlefx.material"
   blend_mode: BLEND_MODE_ADD
   particle_orientation: PARTICLE_ORIENTATION_DEFAULT
-  inherit_velocity: 1.0
-  max_particle_count: 128
+  inherit_velocity: 0.0
+  max_particle_count: 256
   type: EMITTER_TYPE_BOX
   start_delay: 0.0
   properties {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 4.0
+      y: 24.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -67,17 +67,17 @@ emitters {
     key: EMITTER_KEY_PARTICLE_LIFE_TIME
     points {
       x: 0.0
-      y: 1.0
+      y: 4.0
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.1
+    spread: 0.4
   }
   properties {
     key: EMITTER_KEY_PARTICLE_SPEED
     points {
       x: 0.0
-      y: -120.0
+      y: -60.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -127,7 +127,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_ALPHA
     points {
       x: 0.0
-      y: 0.8
+      y: 0.6
       t_x: 1.0
       t_y: 0.0
     }
@@ -167,7 +167,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_ANGULAR_VELOCITY
     points {
       x: 0.0
-      y: 0.0
+      y: 1.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -177,9 +177,15 @@ emitters {
     key: PARTICLE_KEY_SCALE
     points {
       x: 0.0
-      y: 1.0
-      t_x: 1.0
-      t_y: 0.0
+      y: 1.0549502
+      t_x: 0.9998421
+      t_y: 0.017768534
+    }
+    points {
+      x: 1.0
+      y: 3.014589
+      t_x: 0.99776244
+      t_y: 0.06685848
     }
   }
   particle_properties {
@@ -213,15 +219,15 @@ emitters {
     key: PARTICLE_KEY_ALPHA
     points {
       x: 0.0
-      y: 0.9384259
-      t_x: 0.25865197
-      t_y: -0.9659706
+      y: 1.0542698
+      t_x: 0.25759917
+      t_y: -0.96625185
     }
     points {
       x: 1.0
-      y: 0.019154424
-      t_x: 0.7157434
-      t_y: -0.6983633
+      y: -0.013943819
+      t_x: 0.67115664
+      t_y: -0.74131554
     }
   }
   particle_properties {
@@ -265,4 +271,29 @@ emitters {
   duration_spread: 0.0
   stretch_with_velocity: false
   start_offset: 0.0
+}
+modifiers {
+  type: MODIFIER_TYPE_DRAG
+  use_direction: 0
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  properties {
+    key: MODIFIER_KEY_MAGNITUDE
+    points {
+      x: 0.0
+      y: 2.0
+      t_x: 1.0
+      t_y: 0.0
+    }
+    spread: 0.0
+  }
 }

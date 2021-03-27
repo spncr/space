@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 # space
 space game in defold
-=======
-# Welcome to Defold
 
-This project was created from the "empty" project template.
+fly around
 
-The settings in ["game.project"](defold://open?path=/game.project) are all the default. A bootstrap empty ["main.collection"](defold://open?path=/main/main.collection) is included.
+planets coming soon
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
-
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
-
-Happy Defolding!
-
----
->>>>>>> 0a3a9b4 (init commit)
+#credits
+Background image was taken by [chris hetlage](https://hetlage.com), I think? I found it [here](https://apod.nasa.gov/apod/ap050804.html)

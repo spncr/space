@@ -2,7 +2,7 @@ embedded_components {
   id: "stars"
   type: "sprite"
   data: "tile_set: \"/art/stars.atlas\"\n"
-  "default_animation: \"stars\"\n"
+  "default_animation: \"startile\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

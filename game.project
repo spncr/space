@@ -7,7 +7,7 @@ shared_state = 1
 
 [display]
 width = 1200
-height = 600
+height = 810
 
 [android]
 input_method = HiddenInputField
@@ -27,4 +27,10 @@ default_texture_mag_filter = nearest
 world_count = 1
 gravity_y = 0.0
 scale = 0.05
+
+[html5]
+scale_mode = no_scale
+show_made_with_defold = 0
+show_fullscreen_button = 0
+cssfile = /builtins/manifests/web/dark_theme.css
 

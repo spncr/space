@@ -1,7 +1,7 @@
 name: "default"
 instances {
   id: "ship"
-  prototype: "/ship/ship.go"
+  prototype: "/universe/ship/ship.go"
   position {
     x: 100.0
     y: 100.0
@@ -12,6 +12,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "ship"
+    properties {
+      id: "power"
+      value: "8.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
@@ -47,7 +55,7 @@ instances {
     }
     properties {
       id: "zoom"
-      value: "0.5"
+      value: "1.0"
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
